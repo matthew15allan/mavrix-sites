@@ -35,16 +35,15 @@
 </head>
 <body>
 <div class="wrap">
-  <nav><div class="mark">Mavrix<span>.</span>AI</div><div class="pill">Founding access — limited</div></nav>
+  <nav><div class="mark">Mavrix<span>.</span>AI</div><div class="pill">Early access — waitlist open</div></nav>
   <header>
     <div class="eyebrow">For solo builders</div>
     <h1 class="serif">Your AI runs your side hustle. And can't wreck it.</h1>
     <p class="sub">Give it the goal. It builds, posts, and handles the busywork on its own, in the background — while you're at your day job or asleep. Every move is logged. You hold the kill switch. It can't spend or break anything you didn't allow.</p>
     <p style="margin-top:16px;font-size:16px;color:var(--ink);max-width:54ch"><b>Works with the AI you already use</b> — Claude, ChatGPT. It doesn't replace them. It's the layer that lets them run on their own, safely.</p>
-    <div class="price">Founding price: <b>$29/mo</b> — locked for life, cancel anytime.</div>
-    <div class="cta"><a class="btn" id="go" href="#">Get founding access →</a></div>
-    <div class="micro">Card secures your founder spot and price. We onboard founders in small batches.</div>
-    <div id="done">You're in line. <b>Your email just opened — hit send to lock your founder spot.</b> We reach out as batches open.</div>
+    <div class="cta"><a class="btn" id="go" href="#">Join the waitlist →</a></div>
+    <div class="micro">Free — it's a waitlist. We'll email you when early spots open.</div>
+    <div id="done">You're on the list. <b>Your email just opened — hit send to join the waitlist.</b> We'll reach out as spots open.</div>
   </header>
 </div>
 <section><div class="wrap">
@@ -63,8 +62,8 @@
   var INBOX="matthew15allan@gmail.com";
   document.getElementById('go').addEventListener('click',function(e){
     e.preventDefault();
-    var body="MAVRIX FOUNDER — PAGE A (solo builder) — $29/mo\n\nI want founding access. Lock my founder price.\n\nMy email: \nWhat I'd point it at: \n";
-    window.location.href="mailto:"+INBOX+"?subject="+encodeURIComponent("MAVRIX FOUNDER A: builder $29")+"&body="+encodeURIComponent(body);
+    var body="MAVRIX WAITLIST — PAGE A (solo builder)\n\nAdd me to the waitlist.\n\nMy email: \nWhat I'd point it at: \n";
+    window.location.href="mailto:"+INBOX+"?subject="+encodeURIComponent("MAVRIX WAITLIST A: builder")+"&body="+encodeURIComponent(body);
     document.getElementById('done').style.display='block';
   });
 </script>
