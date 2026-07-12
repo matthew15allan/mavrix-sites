@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mavrix — let your AI act on its own, and prove it never went rogue</title>
+<meta name="description" content="Mavrix is the trust layer for autonomous AI. Every action your agents take is permissioned, logged, and reversible. Ship them to production. Keep the kill switch.">
+<style>
+  :root{--cream:#F7F4EE;--paper:#FFFDF8;--ink:#111110;--muted:#5c5852;--line:#e2ddd2;--accent:#A8452A;--accent-soft:#f0e4dc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font:400 19px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  .serif{font-family:ui-serif,Georgia,"Times New Roman",serif}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+  .mark{font-weight:700;font-size:20px}.mark span{color:var(--accent)}
+  .pill{font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:6px 14px}
+  header{padding:56px 0 20px}
+  .eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1{font-weight:500;font-size:clamp(40px,7vw,82px);line-height:1.02;letter-spacing:-.02em;margin:18px 0 0;max-width:16ch}
+  .sub{color:var(--muted);font-size:clamp(19px,2.2vw,24px);margin:24px 0 0;max-width:54ch;line-height:1.5}
+  .form{margin:38px 0 12px;display:flex;gap:12px;flex-wrap:wrap;max-width:560px}
+  .form input{flex:1;min-width:220px;font:inherit;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:15px 20px}
+  .form input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .form button{font:inherit;font-weight:600;background:var(--ink);color:var(--cream);border:none;border-radius:100px;padding:15px 28px;cursor:pointer;transition:.2s}
+  .form button:hover{background:var(--accent)}
+  .micro{color:var(--muted);font-size:14px;margin-top:2px}
+  #done{display:none;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:20px;max-width:560px}
+  #done b{color:var(--accent)}
+
+  section{padding:60px 0;border-top:1px solid var(--line)}
+  h2{font-weight:500;font-size:clamp(26px,4vw,40px);letter-spacing:-.015em;margin:0}
+  .rows{margin-top:30px;display:grid;gap:2px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--line)}
+  .rows div{background:var(--paper);padding:22px 24px}
+  .rows b{font-weight:600}.rows span{color:var(--muted);display:block;margin-top:5px;font-size:17px}
+  .how{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .how div{background:var(--paper);padding:24px 20px}
+  .how .k{font-family:ui-serif,Georgia,serif;color:var(--accent);font-size:15px;letter-spacing:.05em}
+  .how b{display:block;margin-top:8px;font-size:17px}
+  @media(max-width:760px){.how{grid-template-columns:1fr 1fr}}
+  footer{border-top:1px solid var(--line);padding:44px 0 70px;color:var(--muted);font-size:15px}
+  .cta2{margin-top:26px}
+  .cta2 a{display:inline-block;background:var(--ink);color:var(--cream);text-decoration:none;border-radius:100px;padding:15px 30px;font-weight:600}
+  .cta2 a:hover{background:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><div class="mark">Mavrix<span>.</span>AI</div><div class="pill">Private beta — join the list</div></nav>
+
+  <header>
+    <div class="eyebrow">The trust layer for autonomous AI</div>
+    <h1 class="serif">Let your AI act on its own. Prove it never went rogue.</h1>
+    <p class="sub">Your agents are stuck in demos because you can't trust them in production. Mavrix is the permission, audit, and kill-switch layer that lets them act for real — every action allowed, logged, and reversible.</p>
+
+    <form class="form" id="form">
+      <input id="email" type="email" required placeholder="work email">
+      <input id="what" placeholder="what are you building? (optional)">
+      <button type="submit">Get early access</button>
+    </form>
+    <div class="micro">For teams building and shipping AI agents. No spam. We'll reach out.</div>
+    <div id="done">You're on the list. <b>Check your email opened — hit send to lock your spot.</b> We'll be in touch as spots open.</div>
+  </header>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Why teams can't ship agents</div>
+    <h2 class="serif">The wall is trust. Mavrix is the key.</h2>
+    <div class="rows">
+      <div><b>"It might go rogue."</b><span>Every action runs through a mandate. It can only do what you allowed — nothing else, ever.</span></div>
+      <div><b>"We can't prove what it did."</b><span>Every move is written to a tamper-proof log. Audit any action, any time. Pass the review.</span></div>
+      <div><b>"It could spend or break something."</b><span>Hard budget caps and scopes in code. It can't touch what you didn't approve.</span></div>
+      <div><b>"We need to be able to stop it."</b><span>You hold the keys and the kill switch. Always. Stop it in one move.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2 class="serif">Drop it under your agents. Ship with confidence.</h2>
+    <div class="how">
+      <div><div class="k">01</div><b>Set the mandates</b></div>
+      <div><div class="k">02</div><b>Your agents act through Mavrix</b></div>
+      <div><div class="k">03</div><b>Every move is checked + logged</b></div>
+      <div><div class="k">04</div><b>You review, cap, or kill anytime</b></div>
+    </div>
+    <p class="sub" style="margin-top:30px">It's real: Mavrix already runs its own company on itself — building, publishing, operating on its own, every action permissioned and logged.</p>
+    <div class="cta2"><a href="#form" onclick="document.getElementById('email').focus()">Join the private beta</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Mavrix AI — the trust layer for autonomous AI. Let it act. Keep control.</div>
+</footer>
+
+<script>
+  var INBOX="matthew15allan@gmail.com";
+  var form=document.getElementById('form');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=document.getElementById('email').value.trim();
+    if(!email||email.indexOf('@')<1)return;
+    var what=document.getElementById('what').value.trim();
+    var body="MAVRIX WAITLIST\n\nEmail: "+email+"\nBuilding: "+what+"\n";
+    window.location.href="mailto:"+INBOX+"?subject="+encodeURIComponent("MAVRIX WAITLIST: "+email)+"&body="+encodeURIComponent(body);
+    document.getElementById('done').style.display='block';
+  });
+</script>
+</body>
+</html>
