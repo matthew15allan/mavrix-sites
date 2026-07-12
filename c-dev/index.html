@@ -35,17 +35,16 @@
 </head>
 <body>
 <div class="wrap">
-  <nav><div class="mark">Mavrix<span>.</span>AI</div><div class="pill">Private beta — founding devs</div></nav>
+  <nav><div class="mark">Mavrix<span>.</span>AI</div><div class="pill">Private beta — waitlist open</div></nav>
   <header>
     <div class="eyebrow">For teams building agents</div>
     <h1>Let your agents act in production. Without going rogue.</h1>
     <p class="sub">Drop-in permission, logging, and a kill switch for your AI agents. Every action allowed, logged, and reversible — so legal and security stop saying no, even when the agent gets prompt-injected.</p>
     <p style="margin-top:16px;font-size:16px;color:var(--ink);max-width:56ch"><b>Works with your stack</b> — any model, any framework. It doesn't replace your agents. It's the trust layer you wrap around them.</p>
     <div class="code"><span class="c">// wrap any tool call — one line</span><br>const ok = await mavrix.<span class="g">check</span>(agent, action)<br><span class="c">// allowed? runs. not? blocked + logged. always killable.</span></div>
-    <div class="price">Founding dev price: <b>$99/mo</b> — locked, cancel anytime.</div>
-    <div class="cta"><a class="btn" id="go" href="#">Get founding access →</a></div>
-    <div class="micro">Card secures your founder spot. We onboard teams in small batches.</div>
-    <div id="done">You're in. <b>Your email just opened — hit send to lock your founder spot.</b> We reach out as batches open.</div>
+    <div class="cta"><a class="btn" id="go" href="#">Join the waitlist →</a></div>
+    <div class="micro">Free — it's a waitlist. We'll email you when the beta opens.</div>
+    <div id="done">You're on the list. <b>Your email just opened — hit send to join the waitlist.</b> We'll reach out as the beta opens.</div>
   </header>
 </div>
 <section><div class="wrap">
@@ -64,8 +63,8 @@
   var INBOX="matthew15allan@gmail.com";
   document.getElementById('go').addEventListener('click',function(e){
     e.preventDefault();
-    var body="MAVRIX FOUNDER — PAGE C (developer) — $99/mo\n\nI want founding access. Lock my founder price.\n\nMy email: \nWhat I'm building (agents / framework): \n";
-    window.location.href="mailto:"+INBOX+"?subject="+encodeURIComponent("MAVRIX FOUNDER C: dev $99")+"&body="+encodeURIComponent(body);
+    var body="MAVRIX WAITLIST — PAGE C (developer)\n\nAdd me to the waitlist.\n\nMy email: \nWhat I'm building (agents / framework): \n";
+    window.location.href="mailto:"+INBOX+"?subject="+encodeURIComponent("MAVRIX WAITLIST C: dev")+"&body="+encodeURIComponent(body);
     document.getElementById('done').style.display='block';
   });
 </script>
