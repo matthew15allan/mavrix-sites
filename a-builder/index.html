@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mavrix — your AI runs your side hustle, and can't wreck it</title>
+<meta name="description" content="An AI that runs your side project on its own — builds, posts, handles the busywork — with a hard kill switch and a log of everything. You stay in control.">
+<style>
+  :root{--cream:#F7F4EE;--paper:#FFFDF8;--ink:#111110;--muted:#5c5852;--line:#e2ddd2;--accent:#A8452A;--accent-soft:#f0e4dc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font:400 19px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  .serif{font-family:ui-serif,Georgia,"Times New Roman",serif}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+  .mark{font-weight:700;font-size:20px}.mark span{color:var(--accent)}
+  .pill{font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:6px 14px}
+  header{padding:52px 0 20px}
+  .eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1{font-weight:500;font-size:clamp(40px,7vw,78px);line-height:1.02;letter-spacing:-.02em;margin:18px 0 0;max-width:15ch}
+  .sub{color:var(--muted);font-size:clamp(19px,2.2vw,24px);margin:24px 0 0;max-width:54ch;line-height:1.5}
+  .price{margin-top:34px;font-size:17px;color:var(--ink)}
+  .price b{font-size:22px}
+  .cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn{font:inherit;font-weight:600;background:var(--ink);color:var(--cream);border:none;border-radius:100px;padding:16px 32px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+  .btn:hover{background:var(--accent)}
+  .micro{color:var(--muted);font-size:14px;margin-top:12px}
+  #done{display:none;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:18px;max-width:520px}#done b{color:var(--accent)}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-weight:500;font-size:clamp(24px,4vw,36px);letter-spacing:-.015em;margin:0}
+  .rows{margin-top:26px;display:grid;gap:2px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--line)}
+  .rows div{background:var(--paper);padding:20px 22px}.rows b{font-weight:600}.rows span{color:var(--muted);display:block;margin-top:5px;font-size:16px}
+  footer{border-top:1px solid var(--line);padding:40px 0 70px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><div class="mark">Mavrix<span>.</span>AI</div><div class="pill">Founding access — limited</div></nav>
+  <header>
+    <div class="eyebrow">For solo builders</div>
+    <h1 class="serif">Your AI runs your side hustle. And can't wreck it.</h1>
+    <p class="sub">Give it the goal. It builds, posts, and handles the busywork on its own, in the background — while you're at your day job or asleep. Every move is logged. You hold the kill switch. It can't spend or break anything you didn't allow.</p>
+    <div class="price">Founding price: <b>$29/mo</b> — locked for life, cancel anytime.</div>
+    <div class="cta"><a class="btn" id="go" href="#">Get founding access →</a></div>
+    <div class="micro">Card secures your founder spot and price. We onboard founders in small batches.</div>
+    <div id="done">You're in line. <b>Your email just opened — hit send to lock your founder spot.</b> We reach out as batches open.</div>
+  </header>
+</div>
+<section><div class="wrap">
+  <div class="eyebrow">Why it's different</div>
+  <h2 class="serif">It runs on its own. It still can't hurt you.</h2>
+  <div class="rows">
+    <div><b>Runs in the background, 24/7</b><span>Give it goals once. It works while you don't. No prompting every step.</span></div>
+    <div><b>You set the rules</b><span>What it can and can't do. It literally cannot act outside them.</span></div>
+    <div><b>Every move logged</b><span>See exactly what it did and why. Nothing hidden.</span></div>
+    <div><b>Kill switch is yours</b><span>Stop it in one move, any time. Always.</span></div>
+  </div>
+</div></section>
+<footer><div class="wrap">Mavrix AI — autonomous AI you can actually trust to run on its own.</div></footer>
+</div>
+<script>
+  var INBOX="matthew15allan@gmail.com";
+  document.getElementById('go').addEventListener('click',function(e){
+    e.preventDefault();
+    var body="MAVRIX FOUNDER — PAGE A (solo builder) — $29/mo\n\nI want founding access. Lock my founder price.\n\nMy email: \nWhat I'd point it at: \n";
+    window.location.href="mailto:"+INBOX+"?subject="+encodeURIComponent("MAVRIX FOUNDER A: builder $29")+"&body="+encodeURIComponent(body);
+    document.getElementById('done').style.display='block';
+  });
+</script>
+</body>
+</html>
