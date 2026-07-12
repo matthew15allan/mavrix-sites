@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mavrix AI — describe your idea, it builds the company</title>
+<meta name="description" content="Tell Mavrix AI your idea and a few taste questions. It builds the whole company as a reviewable draft — brand, site, content, plan — then asks for your credentials once and takes it live.">
+<style>
+  :root{--cream:#F7F4EE;--paper:#FFFDF8;--ink:#111110;--muted:#5c5852;--line:#e2ddd2;--accent:#A8452A;--accent-soft:#f0e4dc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:680px;margin:0 auto;padding:0 24px}
+  .serif{font-family:ui-serif,Georgia,"Times New Roman",serif}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+  .mark{font-weight:700;font-size:20px}.mark span{color:var(--accent)}
+  header{padding:48px 0 8px}
+  .eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1{font-weight:500;font-size:clamp(38px,7vw,68px);line-height:1.03;letter-spacing:-.02em;margin:18px 0 0}
+  .sub{color:var(--muted);font-size:20px;margin:20px 0 0;max-width:52ch}
+  form{margin:44px 0 80px;display:grid;gap:26px}
+  .f label{display:block;font-weight:600;font-size:16px;margin-bottom:8px}
+  .f .hint{color:var(--muted);font-weight:400;font-size:14px}
+  .f input,.f textarea{width:100%;font:inherit;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--ink);transition:.15s}
+  .f input:focus,.f textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .f textarea{min-height:110px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:560px){.row{grid-template-columns:1fr}}
+  button{font:inherit;font-weight:600;background:var(--ink);color:var(--cream);border:none;border-radius:100px;padding:16px 30px;cursor:pointer;transition:.2s;justify-self:start}
+  button:hover{background:var(--accent)}
+  button:disabled{opacity:.5;cursor:default}
+  .note{color:var(--muted);font-size:14px;margin-top:-8px}
+  #done{display:none;padding:40px 0 90px}
+  #done h2{font-weight:500;font-size:clamp(28px,4vw,40px);letter-spacing:-.015em}
+  #done p{color:var(--muted);font-size:19px;max-width:52ch}
+  .steps{margin-top:22px;display:grid;gap:10px}
+  .steps div{padding-left:24px;position:relative}
+  .steps div::before{content:"→";position:absolute;left:0;color:var(--accent)}
+  .err{color:var(--accent);font-weight:600;margin-top:6px;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><div class="mark">Mavrix<span>.</span>AI</div><a href="https://mavrixai.vercel.app" style="color:var(--muted);text-decoration:none;font-size:14px">what is this?</a></nav>
+
+  <div id="intake">
+    <header>
+      <div class="eyebrow">Describe your idea</div>
+      <h1 class="serif">Tell it your idea.<br>It builds the company.</h1>
+      <p class="sub">A few honest questions, then it goes and builds the whole thing as a draft you review — brand, site, content, plan. Nothing goes live until you say so.</p>
+    </header>
+
+    <form id="form">
+      <div class="f"><label>Your idea <span class="hint">in a sentence or two</span></label>
+        <textarea id="idea" required placeholder="e.g. a monthly fresh-flower subscription for small offices"></textarea></div>
+      <div class="row">
+        <div class="f"><label>What should it be called? <span class="hint">optional</span></label><input id="name" placeholder="a name, or leave blank"></div>
+        <div class="f"><label>Who is it for?</label><input id="audience" placeholder="your first customer"></div>
+      </div>
+      <div class="row">
+        <div class="f"><label>What's the offer?</label><input id="offer" placeholder="what they get, and roughly the price"></div>
+        <div class="f"><label>How should it feel?</label><input id="vibe" placeholder="clean, bold, warm, premium..."></div>
+      </div>
+      <div class="row">
+        <div class="f"><label>First win you want</label><input id="firstMove" placeholder="e.g. land 3 local customers"></div>
+        <div class="f"><label>Your email</label><input id="contact" type="email" placeholder="so it can reach you"></div>
+      </div>
+      <button id="go" type="submit">Build my company →</button>
+      <div class="note">It asks for account logins and payment only at the very end, once you've reviewed everything.</div>
+      <div class="err" id="err"></div>
+    </form>
+  </div>
+
+  <div id="done">
+    <div class="eyebrow">One last tap</div>
+    <h2 class="serif">Your email just opened — hit send.</h2>
+    <p>That sends your idea in. The moment it lands, it starts building, on its own. Here's the order:</p>
+    <div class="steps">
+      <div>Positioning and your first customer</div>
+      <div>Brand and voice</div>
+      <div>A real landing page, published live</div>
+      <div>Launch content and a traffic plan</div>
+      <div>One review page with everything, sent to you</div>
+    </div>
+    <p style="margin-top:26px">You'll get an email when the draft is ready to review. The only things it'll ask you for are the logins and payment to take it live — and only at the end.</p>
+  </div>
+</div>
+
+<script>
+  // Free + no server: the submission is sent as an email the loop already reads.
+  var INBOX="matthew15allan@gmail.com";
+  var form=document.getElementById('form'),err=document.getElementById('err'),go=document.getElementById('go');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var idea=val('idea');
+    if(idea.length<8){err.textContent='Tell it a bit more about the idea.';err.style.display='block';return}
+    err.style.display='none';
+    var body="MAVRIX SUBMISSION\n\n"+
+      "Idea: "+idea+"\n"+
+      "Name: "+val('name')+"\n"+
+      "Audience: "+val('audience')+"\n"+
+      "Offer: "+val('offer')+"\n"+
+      "Vibe: "+val('vibe')+"\n"+
+      "First move: "+val('firstMove')+"\n"+
+      "Contact: "+val('contact')+"\n";
+    var subject="MAVRIX IDEA: "+(val('name')||idea.slice(0,40));
+    window.location.href="mailto:"+INBOX+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+    document.getElementById('intake').style.display='none';
+    document.getElementById('done').style.display='block';
+    window.scrollTo(0,0);
+  });
+  function val(id){return document.getElementById(id).value.trim()}
+</script>
+</body>
+</html>
