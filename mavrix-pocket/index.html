@@ -56,7 +56,7 @@
       <div class="q">Here's your first week</div>
       <div class="receipt" id="r1"></div>
       <div class="receipt">Every action needs your one-tap approval first. You hold the keys.</div>
-      <div class="receipt">Every task ends with receipts: recordings, transcripts, sources.</div>
+      <div class="receipt">Every task ends with receipts: sources, drafts, timestamps.</div>
       <p style="color:var(--dim); font-size:15px; margin-top:14px">Start with <b style="color:var(--ink)">3 free tasks</b>. Then:</p>
       <div class="price">$19.99<span style="font-size:16px;color:var(--dim)">/month</span></div>
       <p style="color:var(--dim); font-size:15px">Cancel anytime, in one tap.</p>
@@ -65,7 +65,7 @@
     <button class="cta" id="signup">Get early access</button>
     <div class="msg" id="msg"></div>
     <p class="fine">iPhone app. First invites go out this month.</p>
-    <div class="honest">Honesty policy: Mavrix never fakes a result. If a call fails or an answer can't be verified, it tells you exactly that.</div>
+    <div class="honest">Honesty policy: Mavrix never fakes a result. If a task fails or an answer can't be verified, it tells you exactly that.</div>
   </div>
 </div>
 
@@ -75,37 +75,29 @@
   // the button will say so loudly instead of silently losing signups.
   const FORM_ENDPOINT = "";
 
-  // Four hooks, one product. Pick with ?v=calls|parents|adhd|assistant
+  // Four hooks, one product. Pick with ?v=parents|adhd|assistant
   const VARIANTS = {
-    calls: {
-      headline: 'The calls you keep putting off? <span>Mavrix makes them.</span>',
-      sub: "Your AI secretary dials, talks, and gets the answer, then hands you the recording. You never touch the phone.",
-      q1t: "Which call have you been avoiding?",
-      q1o: ["📞 A business (appointment, order, question)", "🏥 Doctor / pharmacy / insurance", "🛠 Getting a quote or chasing a refund", "😬 Honestly, all of them"],
-      q2t: "How long does a dreaded call sit on your list?",
-      q2o: ["A day or two", "A week+", "Until it's too late"],
-    },
     parents: {
       headline: 'The family to-do list <span>finally does itself.</span>',
-      sub: "Appointments, sign-ups, callbacks, reservations. Tell Mavrix once and it handles it, then shows you proof.",
+      sub: "Camps, sitters, gear, quotes, the emails you owe people. Tell Mavrix once and it handles it, then shows you proof.",
       q1t: "What eats your week the most?",
-      q1o: ["🏥 Booking appointments for everyone", "📞 Calls you can't make during work", "🔎 Researching camps, sitters, gear", "📬 Follow-ups that fall through cracks"],
+      q1o: ["🔎 Researching camps, sitters, gear", "💰 Finding and comparing quotes", "📬 Follow-ups and emails I owe people", "👀 Deadlines and sign-ups I might miss"],
       q2t: "How many of those hit you a week?",
       q2o: ["A couple", "5 to 10", "I've lost count"],
     },
     adhd: {
       headline: 'Know exactly what to do, <span>but can\'t start it?</span>',
-      sub: "Hand the task to Mavrix instead. It makes the call, sends the thing, finds the answer, and shows you receipts.",
+      sub: "Hand the task to Mavrix instead. It finds the answer, drafts the thing, watches the deadline, and shows you receipts.",
       q1t: "Which task has been stuck the longest?",
-      q1o: ["📞 A phone call I keep rehearsing", "📬 An email or form I keep opening", "🔎 A decision I keep researching", "🗓 Something with a deadline coming"],
+      q1o: ["📬 An email I keep opening and closing", "🔎 A decision I keep researching", "🗓 Something with a deadline coming", "🛒 A thing I keep meaning to compare and buy"],
       q2t: "How long has it been stuck?",
       q2o: ["A few days", "Weeks", "I don't want to say"],
     },
     assistant: {
       headline: 'Meet <span>Mavrix</span>, your AI personal assistant.',
-      sub: "You say the task. It makes the calls, digs up answers, drafts the emails, and hands you receipts, while you live your life.",
+      sub: "You say the task. It digs up answers, compares options, drafts the emails, and hands you receipts, while you live your life.",
       q1t: "What would you hand off first?",
-      q1o: ["📞 Phone calls I keep putting off", "🔎 Research and comparing options", "📬 Email drafts and follow-ups", "👀 Watching for something (a price, a reply)"],
+      q1o: ["🔎 Research and comparing options", "📬 Email drafts and follow-ups", "👀 Watching for something (a price, a reply)", "🧾 Decisions I keep putting off"],
       q2t: "How many of those hit you a week?",
       q2o: ["A couple", "5 to 10", "I've lost count"],
     },
