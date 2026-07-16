@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HomeReset: see your room clean, then actually get there</title>
+<style>
+  :root { --bg:#0b0d12; --card:#141823; --ink:#f2f4f8; --dim:#9aa3b2; --brand:#4f8cff; --ok:#2fd07e; --bad:#ff6b6b; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .wrap { max-width:520px; margin:0 auto; padding:48px 20px 80px; }
+  h1 { font-size:33px; line-height:1.15; letter-spacing:-0.5px; }
+  h1 span { color:var(--brand); }
+  .sub { color:var(--dim); margin:14px 0 34px; font-size:18px; }
+  .card { background:var(--card); border:1px solid #232a3a; border-radius:16px; padding:22px; margin-bottom:14px; }
+  .q { font-weight:600; font-size:18px; margin-bottom:14px; }
+  button.opt { display:block; width:100%; text-align:left; background:#1b2130; color:var(--ink);
+    border:1px solid #2a3348; border-radius:12px; padding:14px 16px; font-size:16px; margin-bottom:10px; cursor:pointer; }
+  button.opt:hover, button.opt.sel { border-color:var(--brand); }
+  button.opt.sel { background:#1d2a45; }
+  .cta { display:block; width:100%; background:var(--brand); color:#fff; border:none; border-radius:12px;
+    padding:16px; font-size:17px; font-weight:700; cursor:pointer; text-align:center; text-decoration:none; }
+  .cta[disabled] { opacity:.4; cursor:default; }
+  .fine { color:var(--dim); font-size:13px; margin-top:12px; text-align:center; }
+  .step { display:none; } .step.on { display:block; }
+  .receipt { border-left:3px solid var(--ok); padding-left:12px; margin:10px 0; font-size:15px; }
+  .price { font-size:30px; font-weight:800; margin:6px 0 2px; }
+  .honest { border:1px dashed #2a3348; border-radius:12px; padding:12px 16px; color:var(--dim); font-size:14px; margin-top:18px; }
+  input.email { width:100%; background:#1b2130; border:1px solid #2a3348; border-radius:12px; color:var(--ink);
+    padding:14px 16px; font-size:16px; margin-bottom:10px; }
+  .msg { text-align:center; margin-top:10px; font-size:14px; }
+</style>
+</head>
+<body>
+<!-- DRAFT RIBBON: required by mandate draft-publishing. Remove only when
+     venture-mavrix-ai is signed and the signup endpoint is armed. -->
+<div style="background:#3a2b12; color:#ffb454; text-align:center; padding:8px 12px; font-size:13px; letter-spacing:.5px;">
+  DRAFT PREVIEW · not launched · signups not yet open
+</div>
+<div class="wrap">
+  <h1 id="headline"></h1>
+  <p class="sub" id="subline"></p>
+
+  <div class="step on" id="s1">
+    <div class="card"><div class="q" id="q1t"></div><div id="q1o"></div></div>
+    <div class="card"><div class="q" id="q2t"></div><div id="q2o"></div></div>
+    <div class="card">
+      <div class="q">Would seeing a photo of YOUR room, already clean, help you start?</div>
+      <div id="q3o"></div>
+    </div>
+    <button class="cta" id="next" disabled>See how it works for me →</button>
+  </div>
+
+  <div class="step" id="s2">
+    <div class="card">
+      <div class="q">Your first reset</div>
+      <div class="receipt" id="r1"></div>
+      <div class="receipt">One photo in. Your room, clean, on screen. Then steps so small the first one takes 2 minutes.</div>
+      <div class="receipt">No judgment, ever. Progress photos stay on your phone.</div>
+      <p style="color:var(--dim); font-size:15px; margin-top:14px">Start with <b style="color:var(--ink)">3 free resets</b>. Then:</p>
+      <div class="price">$4.99<span style="font-size:16px;color:var(--dim)">/week</span></div>
+      <p style="color:var(--dim); font-size:15px">Cancel anytime, in one tap.</p>
+    </div>
+    <input class="email" id="email" type="email" placeholder="you@email.com" autocomplete="email" />
+    <button class="cta" id="signup">Get early access</button>
+    <div class="msg" id="msg"></div>
+    <p class="fine">iPhone app. First invites go out this month.</p>
+    <div class="honest">Honesty policy: the "clean" image is an AI preview of your own room, a goal picture, and we always label it that way. The steps are real. The progress is yours.</div>
+  </div>
+</div>
+
+<script>
+  // === TEST CONFIG ===============================================
+  // Signup endpoint (Formspree or similar). EMPTY = test not armed:
+  // the button will say so loudly instead of silently losing signups.
+  const FORM_ENDPOINT = "";
+
+  // Four hooks, one product. Pick with ?v=adhd|parent|overwhelmed
+  const VARIANTS = {
+    adhd: {
+      headline: 'Your room isn\'t hopeless. <span>Your steps are too big.</span>',
+      sub: "Snap one photo of the mess. See your own room clean. Get steps so small your brain actually starts.",
+      q1t: "Which space defeats you the most?",
+      q1o: ["\ud83d\udecf The bedroom", "\ud83c\udf73 The kitchen", "\ud83e\ude91 THE chair (you know the one)", "\ud83d\ude97 The car / the desk"],
+      q2t: "What happens when you try to start?",
+      q2o: ["I don't know where to begin", "I start 5 things and finish none", "10 minutes, then doom-scroll", "I just shut down"],
+    },
+    parent: {
+      headline: 'The house resets tonight, <span>without the fight.</span>',
+      sub: "Snap a photo of any room. See it clean. Get a 15-minute step list that actually fits nap time.",
+      q1t: "Which room is losing right now?",
+      q1o: ["\ud83e\uddf8 The playroom / living room", "\ud83c\udf73 The kitchen", "\ud83d\udecf The kids' rooms", "\ud83e\uddfa All of it, honestly"],
+      q2t: "When do you get to deal with it?",
+      q2o: ["Nap time only", "After bedtime, exhausted", "Weekend blitzes", "Never, it deals with me"],
+    },
+    overwhelmed: {
+      headline: 'You know you should clean. <span>You just can\'t start.</span>',
+      sub: "Snap one photo. See your space clean. Start with a step so small it feels like cheating.",
+      q1t: "What's the real blocker?",
+      q1o: ["\ud83e\udde0 It's too much to look at", "\u23f0 No energy after work", "\ud83d\ude35 Don't know where to start", "\ud83d\udc94 Shame spiral, honestly"],
+      q2t: "How long has the mess been winning?",
+      q2o: ["A week or two", "A few months", "I stopped counting"],
+    },
+  };
+  const vkey = new URLSearchParams(location.search).get("v") || "adhd";
+  const V = VARIANTS[vkey] || VARIANTS.adhd;
+
+  document.getElementById("headline").innerHTML = V.headline;
+  document.getElementById("subline").textContent = V.sub;
+  document.getElementById("q1t").textContent = V.q1t;
+  document.getElementById("q2t").textContent = V.q2t;
+
+  const picks = {};
+  function fill(containerId, options, qkey) {
+    const el = document.getElementById(containerId);
+    options.forEach((label) => {
+      const b = document.createElement("button");
+      b.className = "opt"; b.textContent = label;
+      b.onclick = () => {
+        el.querySelectorAll(".opt").forEach((x) => x.classList.remove("sel"));
+        b.classList.add("sel");
+        picks[qkey] = label;
+        document.getElementById("next").disabled = !(picks.q1 && picks.q2 && picks.q3);
+      };
+      el.appendChild(b);
+    });
+  }
+  fill("q1o", V.q1o, "q1");
+  fill("q2o", V.q2o, "q2");
+  fill("q3o", ["Yes, show me mine", "Maybe, I need the steps more"], "q3");
+
+  document.getElementById("next").onclick = () => {
+    document.getElementById("s1").classList.remove("on");
+    document.getElementById("s2").classList.add("on");
+    document.getElementById("r1").textContent =
+      `Reset #1: ${picks.q1.replace(/^[^ ]+ /, "")}. Photo in, clean version out, first tiny step ready.`;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  document.getElementById("signup").onclick = async () => {
+    const email = document.getElementById("email").value.trim();
+    const msg = document.getElementById("msg");
+    if (!/.+@.+\..+/.test(email)) { msg.textContent = "Enter a real email and you're in."; msg.style.color = "#ffb454"; return; }
+    if (!FORM_ENDPOINT) {
+      msg.textContent = "Test not armed: no signup endpoint set. (Set FORM_ENDPOINT before driving traffic.)";
+      msg.style.color = "#ff6b6b";
+      return;
+    }
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email, variant: vkey, first_task: picks.q1 || "", frequency: picks.q2 || "" }),
+      });
+      if (!res.ok) throw new Error();
+      msg.textContent = "✓ You're in. Watch your inbox.";
+      msg.style.color = "#2fd07e";
+      document.getElementById("signup").disabled = true;
+    } catch {
+      msg.textContent = "Something hiccuped. Try once more?";
+      msg.style.color = "#ff6b6b";
+    }
+  };
+</script>
+</body>
+</html>
